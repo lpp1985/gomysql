@@ -22,12 +22,12 @@ gomysql
 ###使用教程
 
 >设置配置文件
-[DB]
-	IP=192.168.31.71
-	user = root
-	password = gass_1985
-	port=3306
-	charset=utf8
+    [DB]
+        IP=192.168.31.71
+        user = root
+        password = gass_1985
+        port=3306
+        charset=utf8
 
 >**初始化配置**
 
