@@ -6,7 +6,7 @@ import (
 )
 
 func TestMysql(*testing.T) {
-	c, err := SetConfig("./conf/conf.ini")
+	c, err := SetConfig("general.ini","DB","Taxon")
 	if err != nil {
 		log.Println(err)
 	}

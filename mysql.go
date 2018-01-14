@@ -10,11 +10,12 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/widuu/goini"
 	"regexp"
 	"strconv"
 	"strings"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/widuu/goini"
 )
 
 type Model struct {
@@ -30,15 +31,15 @@ type Model struct {
 }
 
 //use goini read the configuration file and connect the mysql database
-func SetConfig(filename string) (*Model, error) {
+func SetConfig(filename string, section string, database string) (*Model, error) {
 	c := new(Model)
 	conf := goini.SetConfig(filename)
-	charset := conf.GetValue("database", "charset")
-	username := conf.GetValue("database", "username")
-	password := conf.GetValue("database", "password")
-	hostname := conf.GetValue("database", "hostname")
-	database := conf.GetValue("database", "database")
-	port := conf.GetValue("database", "port")
+	charset := conf.GetValue(section, "charset")
+	username := conf.GetValue(section, "user")
+	password := conf.GetValue(section, "password")
+	hostname := conf.GetValue(section, "IP")
+
+	port := conf.GetValue(section, "port")
 	db, err := sql.Open("mysql", username+":"+password+"@tcp("+hostname+":"+port+")/"+database+"?charset="+charset)
 	err = db.Ping()
 	if err != nil {

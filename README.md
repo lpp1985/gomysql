@@ -22,19 +22,17 @@ gomysql
 ###使用教程
 
 >设置配置文件
-
-	[database]
-	username = mysql username
-	password = mysql password
-	hostname = mysql host
-	charset =  mysql charset
-	database = database name
-	port = 	   mysql port
+[DB]
+	IP=192.168.31.71
+	user = root
+	password = gass_1985
+	port=3306
+	charset=utf8
 
 >**初始化配置**
 
 
-    c, _ := gomysql.SetConfig("./conf/conf.ini") //根据配置文件，连接数据库
+    c, _ := gomysql.SetConfig("database.ini","DB","Taxon") //根据配置文件，连接数据库
 
 >查询数据
 
